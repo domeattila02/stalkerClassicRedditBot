@@ -1,30 +1,28 @@
 import praw
-import schedule
-import time
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 reddit = praw.Reddit(
-    client_id='0Zf62eJfJFqlc9bwknZ9WQ',
-    client_secret='xFQgM10Qe0iCj3AgqtO828AEmiwWWw',
-    user_agent='daily poster by Gangstalker',
-
-
-
+    client_id=os.getenv("REDDIT_CLIENT_ID"),
+    client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
+    user_agent="test script by u/" + os.getenv("REDDIT_USERNAME"),
+    username=os.getenv("REDDIT_USERNAME"),
+    password=os.getenv("REDDIT_PASSWORD")
 )
 
 
 SUBREDDIT = "test"
-POST_TITLE = "Napi automatikus poszt"
-POST_BODY = "TESZT TEESZT LOLL!!!"
+POST_TITLE = "Ez egy automatikus tesztposzt a Reddit API-val"
+POST_BODY = "Ez csak teszt."
 
 
-
-def post_daily()
+def post_test():
     subreddit = reddit.subreddit(SUBREDDIT)
-    submissions = subreddit.submit(title=POST_TITLE, body=POST_BODY)
-    print(f"postr elküldve komám: {submissions.url}")
+    submission = subreddit.submit(title=POST_TITLE, selftext=POST_BODY)
+    print(f"Sikeres posztolás: {submission.url}")
 
-schedule.every().day.at("09:00").do(post_daily)
 
-while true:
-    schedule.run_pending()
-    time.sleep(60)
+if __name__ == "__main__":
+    post_test()

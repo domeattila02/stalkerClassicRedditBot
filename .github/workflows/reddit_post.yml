@@ -28,5 +28,5 @@ jobs:
           echo "REDDIT_USERNAME=${{ secrets.REDDIT_USERNAME }}" >> .env
           echo "REDDIT_PASSWORD=${{ secrets.REDDIT_PASSWORD }}" >> .env
 
-      - name: Script futtatása
+      - name: running script
         run: python main.py

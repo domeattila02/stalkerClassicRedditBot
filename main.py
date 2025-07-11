@@ -33,8 +33,8 @@ Stalker Classic is a freshly started Stalker RP server. Join now to be among the
 def post_daily():
     subreddit = reddit.subreddit(SUBREDDIT)
     submission = subreddit.submit(title=POST_TITLE, selftext=POST_BODY)
-    submission.mod.sfw()  # Ezzel biztosan levesszük a +18 címkét
-    print(f"✅ Poszt kiment: {submission.url}")
+    submission.mod.sfw()
+    print(f"✅ post output: {submission.url}")
 
 if __name__ == "__main__":
     post_daily()

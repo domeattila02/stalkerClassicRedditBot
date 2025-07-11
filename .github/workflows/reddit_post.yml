@@ -1,32 +1,32 @@
-name: StalkerClassicRedditPoster
+name: Reddit Daily STALKER Post
 
 on:
   schedule:
-    - cron: '1 0 * * *'  # UTC idő szerint minden nap reggel 10-kor (pl. 10:00 CEST)
-  workflow_dispatch:      # manuális indítás lehetősége is
+    - cron: '0 8 * * *'  # 08:00 UTC = 10:00 CEST
+  workflow_dispatch:
 
 jobs:
-  post-to-reddit:
+  post:
     runs-on: ubuntu-latest
 
     steps:
-      - name: cloning repo
+      - name: git cloning
         uses: actions/checkout@v3
 
-      - name: python setup
+      - name: Python setup
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
 
-      - name: installing dependencies
+      - name: pythong requirements install
         run: pip install -r requirements.txt
 
-      - name: .env setup
+      - name: .env
         run: |
           echo "REDDIT_CLIENT_ID=${{ secrets.REDDIT_CLIENT_ID }}" >> .env
           echo "REDDIT_CLIENT_SECRET=${{ secrets.REDDIT_CLIENT_SECRET }}" >> .env
           echo "REDDIT_USERNAME=${{ secrets.REDDIT_USERNAME }}" >> .env
           echo "REDDIT_PASSWORD=${{ secrets.REDDIT_PASSWORD }}" >> .env
 
-      - name: running the script
+      - name: Script futtatása
         run: python main.py

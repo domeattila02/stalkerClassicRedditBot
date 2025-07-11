@@ -30,11 +30,10 @@ Stalker Classic is a freshly started Stalker RP server. Join now to be among the
 
 **Whitelist required!** Join our Discord to get whitelisted and jump in!
 """
-
 def post_daily():
     subreddit = reddit.subreddit(SUBREDDIT)
     submission = subreddit.submit(title=POST_TITLE, selftext=POST_BODY)
-    submission.mod.nsfw(False)
+    submission.mod.sfw()  # Ezzel biztosan levesszük a +18 címkét
     print(f"✅ Poszt kiment: {submission.url}")
 
 if __name__ == "__main__":

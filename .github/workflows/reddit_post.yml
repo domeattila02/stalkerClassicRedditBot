@@ -27,6 +27,7 @@ jobs:
           echo "REDDIT_CLIENT_SECRET=${{ secrets.REDDIT_CLIENT_SECRET }}" >> .env
           echo "REDDIT_USERNAME=${{ secrets.REDDIT_USERNAME }}" >> .env
           echo "REDDIT_PASSWORD=${{ secrets.REDDIT_PASSWORD }}" >> .env
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}  # Add this line
 
       - name: running script
         run: python main.py
